@@ -183,9 +183,10 @@
       <h1>Hello, {{ title }}</h1>
       <p>Welcome to the official Best Buy site. 🎉</p>
       <input type="number" value="temp" (input)="increaseTemp($event)" />
-      <button (click)="increment()">Click</button>
-      <input [type]="check" />
-      <p>{{ temp }}</p>
+      <button (click)="increment()">Store</button>
+      <button (click)="increaseOne()">+1</button>
+      <button (click)="decrementOne()">-1</button>
+      <p>InputValue :  {{ temp }}</p>
       <p>Count : {{ count }}</p>
     </div>
   </div>
