@@ -1,0 +1,24 @@
+<p>Products</p>
+
+<button (click)="getProducts()">Get Products</button>
+<div class="separator">
+  <div class="card-container">
+    <div class="card" *ngFor="let item of items">
+      <img [src]="item.images[0]" alt="Product image" class="img-card" />
+      <h3 class="card-title">{{ item.title }}</h3>
+      <p class="card-detail">
+        <strong>{{ item.description }}</strong>
+      </p>
+      <p class="card-detail">
+        <strong>${{ item.price }}</strong>
+      </p>
+      <button class="card-button" (click)="addToCart(item)">Add to Cart</button>
+      <button class="card-button-del" (click)="deleteFromCart(item.id)">
+        Delete From Cart
+      </button>
+    </div>
+  </div>
+  <div class="cart">
+    <app-cart></app-cart>
+  </div>
+</div>

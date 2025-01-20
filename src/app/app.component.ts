@@ -3,17 +3,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-
-export interface ITodo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { HeaderComponent } from './header/header.component';
+import { BodyComponent } from './body/body.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, HttpClientModule, CommonModule],
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    HeaderComponent,
+    BodyComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -44,15 +46,5 @@ export class AppComponent {
     this.count -= 1;
   }
 
-  todos: ITodo[] = [];
-
   constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    this.http
-      .get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
-      .subscribe((data) => {
-        this.todos = data;
-      });
-  }
 }

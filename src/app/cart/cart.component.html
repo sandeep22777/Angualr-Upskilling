@@ -1,0 +1,15 @@
+<div class="my-cart">
+  <h2>My Cart</h2>
+  <div class="card-container">
+    <div class="card" *ngFor="let item of products$ | async">
+      <img [src]="item.image" alt="Product image" class="img-card" />
+      <h3 class="card-title">{{ item.title }}</h3>
+      <p class="card-detail">
+        <strong>{{ item.description }}</strong>
+      </p>
+      <p class="card-detail">
+        <strong>${{ item.price }}</strong>
+      </p>
+    </div>
+  </div>
+</div>
