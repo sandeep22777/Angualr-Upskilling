@@ -1,0 +1,32 @@
+<div class="form-container">
+  <div>
+    <label for="name">Name : </label>
+    <input
+      id="name"
+      type="text"
+      [(ngModel)]="formData.name"
+      value="formData.name"
+    />
+  </div>
+  <div>
+    <label for="email">Email : </label>
+    <input
+      id="email"
+      type="text"
+      [(ngModel)]="formData.email"
+      value="formData.email"
+    />
+  </div>
+  <div>
+    <label for="password">Password : </label>
+    <input
+      id="password"
+      type="password"
+      [(ngModel)]="formData.password"
+      value="formData.password"
+    />
+  </div>
+  <div>
+    <button (click)="saveData()">Save</button>
+  </div>
+</div>

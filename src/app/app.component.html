@@ -78,6 +78,12 @@
       margin-block: 1.5rem;
     }
   }
+  .iinput {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    gap: 2rem;
+  }
 </style>
 
 <main class="main">
@@ -85,7 +91,22 @@
     <h1>Hello, {{ title }}</h1>
     <p>Welcome to the official Best Buy site. 🎉</p>
   </div>
-  <app-body></app-body>
+  <nav class="links">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact</a>
+  </nav>
+  <!-- <h2>Parent Component</h2>
+  <h3>ng After View Init</h3>
+  <p #pp>After View Init</p>
+  <div class="iinput">
+    <input type="text" [(ngModel)]="data" />
+    temp : <input type="text" [(ngModel)]="temp" />
+  </div>
+  <app-children [cdata]="data">
+    <p #content>This is Parent Data Projection</p>
+    <p>{{ data }}</p>
+  </app-children> -->
 </main>
 
-<router-outlet />
+<router-outlet> </router-outlet>

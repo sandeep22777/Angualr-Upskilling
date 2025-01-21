@@ -1,0 +1,19 @@
+.active {
+  background-color: blanchedalmond;
+}
+
+.links {
+  display: flex;
+  gap: 5rem;
+  text-decoration: none;
+  background-color: aliceblue;
+  text-decoration: none !important;
+}
+.deco {
+  text-decoration: none !important;
+}
+
+.active {
+  background: black;
+  color: whitesmoke;
+}

@@ -5,3 +5,9 @@ export interface IProduct {
   description: string;
   image: string;
 }
+
+export interface IForm {
+  name: string;
+  email: string;
+  password: string;
+}

@@ -3,7 +3,7 @@ import {
   importProvidersFrom,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
@@ -18,20 +18,12 @@ import { ToastrModule, provideToastr } from 'ngx-toastr';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     provideStore({
       products: productsReducer,
     }),
     provideStoreDevtools(),
     provideAnimations(),
     provideToastr(),
-    // importProvidersFrom(
-    //   BrowserAnimationsModule,
-    //   ToastrModule.forRoot({
-    //     timeOut: 3000,
-    //     positionClass: 'toast-top-right',
-    //     preventDuplicates: true,
-    //   })
-    // ),
   ],
 };
