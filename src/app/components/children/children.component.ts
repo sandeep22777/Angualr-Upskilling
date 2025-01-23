@@ -20,15 +20,7 @@ import {
   styleUrl: './children.component.css',
   standalone: true,
 })
-export class ChildrenComponent
-  implements
-    OnChanges,
-    OnInit,
-    DoCheck,
-    AfterViewChecked,
-    AfterContentInit,
-    AfterContentChecked
-{
+export class ChildrenComponent {
   @Input() cdata: string = '';
   @ContentChild('content') projectedContent!: ElementRef;
   sum: number = 0;
@@ -40,30 +32,30 @@ export class ChildrenComponent
     this.counter++;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['cdata']) {
-      this.sum += 1;
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['cdata']) {
+  //     this.sum += 1;
+  //   }
+  // }
 
-  ngOnInit(): void {
-    this.greetings = 'Welcome all';
-  }
+  // ngOnInit(): void {
+  //   this.greetings = 'Welcome all';
+  // }
 
-  ngDoCheck(): void {
-    console.log('ngDocheck Called Children');
-  }
+  // ngDoCheck(): void {
+  //   console.log('ngDocheck Called Children');
+  // }
 
-  ngAfterViewChecked(): void {
-    console.log('After View Checked Children');
-  }
+  // ngAfterViewChecked(): void {
+  //   console.log('After View Checked Children');
+  // }
 
-  ngAfterContentInit(): void {
-    console.log('After Content Init Children');
-    console.log(this.projectedContent.nativeElement, 'aci');
-  }
+  // ngAfterContentInit(): void {
+  //   console.log('After Content Init Children');
+  //   console.log(this.projectedContent.nativeElement, 'aci');
+  // }
 
-  ngAfterContentChecked(): void {
-    console.log('After Content Checked Children');
-  }
+  // ngAfterContentChecked(): void {
+  //   console.log('After Content Checked Children');
+  // }
 }

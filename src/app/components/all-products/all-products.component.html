@@ -1,0 +1,93 @@
+<!-- Add Product Button -->
+<!-- <button class="add-product-btn" (click)="openModal()">Add Product</button> -->
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>{{ isEditMode ? "Edit Product" : "Add Product" }}</h3>
+    <form (ngSubmit)="onSubmit()">
+      <label for="productSku">Product SKU</label>
+      <input
+        id="productSku"
+        type="text"
+        [(ngModel)]="productForm.ProductSku"
+        name="productSku"
+        required
+      />
+
+      <label for="productName">Product Name</label>
+      <input
+        id="productName"
+        type="text"
+        [(ngModel)]="productForm.ProductName"
+        name="productName"
+        required
+      />
+
+      <label for="productPrice">Product Price</label>
+      <input
+        id="productPrice"
+        type="number"
+        [(ngModel)]="productForm.ProductPrice"
+        name="productPrice"
+        required
+      />
+
+      <label for="productShortName">Short Name</label>
+      <input
+        id="productShortName"
+        type="text"
+        [(ngModel)]="productForm.ProductShortName"
+        name="productShortName"
+      />
+
+      <label for="productDescription">Description</label>
+      <textarea
+        id="productDescription"
+        [(ngModel)]="productForm.ProductDescription"
+        name="productDescription"
+      ></textarea>
+
+      <label for="productImageUrl">Product Image URL</label>
+      <input
+        id="productImageUrl"
+        type="text"
+        [(ngModel)]="productForm.ProductImageUrl"
+        name="productImageUrl"
+        required
+      />
+
+      <div class="modal-actions">
+        <button type="button" (click)="closeModal()">Cancel</button>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button class="add-product-btn" (click)="openModal()">Add Product</button>
+
+<div class="product-container">
+  <div class="loader-container" *ngIf="isLoading">
+    <div class="loader"></div>
+  </div>
+  <div *ngFor="let product of products" class="product-card">
+    <img
+      [src]="product.productImageUrl"
+      alt="{{ product.productName }}"
+      class="product-image"
+    />
+    <div class="product-details">
+      <h3 class="product-name">{{ product.productName }}</h3>
+      <p class="product-description">{{ product.productDescription }}</p>
+      <p class="product-price">Price: {{ product.productPrice }}</p>
+      <p class="product-category">Category: {{ product.categoryName }}</p>
+    </div>
+    <div class="product-actions">
+      <button class="btn-edit" (click)="openEditModal(product)">Edit</button>
+      <button class="btn-delete" (click)="deleteProduct(product.productId)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

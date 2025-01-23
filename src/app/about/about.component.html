@@ -1,4 +1,4 @@
-<div class="form-container">
+<!-- <div class="form-container">
   <div>
     <label for="name">Name : </label>
     <input
@@ -28,5 +28,57 @@
   </div>
   <div>
     <button (click)="saveData()">Save</button>
+  </div>
+</div> -->
+
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>{{ isEditMode ? "Edit Product" : "Add Product" }}</h3>
+    <form (ngSubmit)="onSubmit()">
+      <label for="productSku">User ID</label>
+      <input
+        id="productSku"
+        type="number"
+        [(ngModel)]="formData.userId"
+        name="productSku"
+        required
+      />
+
+      <label for="productName">Title</label>
+      <input
+        id="productName"
+        type="text"
+        [(ngModel)]="formData.title"
+        name="productName"
+        required
+      />
+
+      <label for="productPrice">Body</label>
+      <input
+        id="productPrice"
+        type="text"
+        [(ngModel)]="formData.body"
+        name="productPrice"
+        required
+      />
+
+      <div class="modal-actions">
+        <button type="button" (click)="closeModal()">Cancel</button>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button class="add-product-btn" (click)="openModal()">Add Product</button>
+
+<div class="product-container">
+  <div *ngFor="let post of posts" class="product-card">
+    <div class="product-details">
+      <h3 class="product-name">Posts</h3>
+      <p class="product-description">{{ post.title }}</p>
+      <p class="product-price">Price: {{ post.body }}</p>
+      <p class="product-category">Category: {{ post.userId }}</p>
+    </div>
   </div>
 </div>
