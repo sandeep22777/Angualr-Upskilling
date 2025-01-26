@@ -1,1 +1,43 @@
-<p>contact works!</p>
+<form ngForm #ff="ngForm" (submit)="contact(ff)" class="form">
+  <div>
+    <label for="username">UserName :</label>
+    <input
+      id="username"
+      required
+      minlength="4"
+      type="text"
+      ngModel
+      #un="ngModel"
+      name="username"
+      [ngClass]="{
+        'border-red': un.invalid && un.touched,
+        'border-green': un.valid
+      }"
+    />
+    <div *ngIf="un.invalid && un.touched" class="error-message">
+      Username must be at least 4 characters long.
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password :</label>
+    <input
+      id="password"
+      required
+      minlength="8"
+      type="password"
+      ngModel
+      #ps="ngModel"
+      name="pass"
+      [ngClass]="{
+        'border-red': ps.invalid && ps.touched,
+        'border-green': ps.valid
+      }"
+    />
+    <div *ngIf="ps.invalid && ps.touched" class="error-message">
+      Password must be at least 8 characters long.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="ff.invalid">Click Me</button>
+</form>

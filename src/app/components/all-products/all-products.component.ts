@@ -19,7 +19,7 @@ export class AllProductsComponent {
   showModal = false;
   isEditMode = false;
   isLoading = true;
-  productForm: IProductRequestBody = {
+  productFormData: IProductRequestBody = {
     ProductId: 0,
     ProductSku: '',
     ProductName: '',
@@ -34,7 +34,7 @@ export class AllProductsComponent {
 
   openEditModal(product: any): void {
     this.isEditMode = true;
-    this.productForm = {
+    this.productFormData = {
       ProductId: product.productId,
       ProductSku: product.productSku,
       ProductName: product.productName,
@@ -68,12 +68,12 @@ export class AllProductsComponent {
 
   closeModal() {
     this.showModal = false;
-    this.productForm = {};
+    this.productFormData = {};
   }
 
   onSubmit() {
     if (this.isEditMode) {
-      this.productService.editProduct(this.productForm).subscribe(
+      this.productService.editProduct(this.productFormData).subscribe(
         (response) => {
           if (response) {
             this.closeModal();
@@ -85,7 +85,7 @@ export class AllProductsComponent {
         }
       );
     } else {
-      this.productService.addProduct(this.productForm).subscribe(
+      this.productService.addProduct(this.productFormData).subscribe(
         (response) => {
           if (response) {
             this.closeModal();
@@ -120,7 +120,7 @@ export class AllProductsComponent {
   }
 
   resetForm() {
-    this.productForm = {
+    this.productFormData = {
       ProductId: 0,
       ProductSku: '',
       ProductName: '',
