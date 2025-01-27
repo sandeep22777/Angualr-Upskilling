@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="title">
+  {{ productForm.valid ? "Edit Product" : "Add Product" }}
+</h2>
+<form class="formm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form-group" appearance="outline" style="width: 100%">
+    <mat-label>Product SKU</mat-label>
+    <input matInput id="productSku" type="text" formControlName="productSku" />
+    <mat-error *ngIf="productForm.get('productSku')?.errors?.['required']">
+      Product SKU is required.
+    </mat-error>
+    <mat-error *ngIf="productForm.get('productSku')?.errors?.['minlength']">
+      Product SKU must be at least 3 characters long.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="outline">
+    <mat-label>Product Name</mat-label>
+    <input
+      matInput
+      id="productName"
+      type="text"
+      formControlName="productName"
+    />
+    <mat-error *ngIf="productForm.get('productName')?.errors?.['required']">
+      Product Name is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="outline">
+    <mat-label>Product Price</mat-label>
+    <input
+      matInput
+      id="productPrice"
+      type="number"
+      formControlName="productPrice"
+    />
+    <mat-error *ngIf="productForm.get('productPrice')?.errors?.['required']">
+      Product Price is required.
+    </mat-error>
+    <mat-error *ngIf="productForm.get('productPrice')?.errors?.['min']">
+      Product Price must be greater than 0.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="modal-actions">
+    <button mat-button type="button" (click)="close()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="productForm.invalid"
+    >
+      Save
+    </button>
+  </div>
+</form>

@@ -15,6 +15,7 @@ import {
 } from '@angular/platform-browser/animations';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideStoreDevtools(),
     provideAnimations(),
-    provideToastr(),
+    provideToastr(), provideAnimationsAsync(),
   ],
 };

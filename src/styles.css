@@ -3,3 +3,18 @@
 .toast {
   z-index: 9999 !important;
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-dialog-container {
+  margin: 0 auto !important; /* Override default margin */
+  max-width: 100% !important; /* Disable the default max-width */
+  width: calc(100vw - 32px) !important; /* Adjust width with slight gap */
+}

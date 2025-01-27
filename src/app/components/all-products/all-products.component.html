@@ -1,9 +1,7 @@
-<!-- Modal Overlay -->
 <div class="modal-overlay" *ngIf="showModal">
   <div class="modal-content">
     <h3>{{ isEditMode ? "Edit Product" : "Add Product" }}</h3>
     <form #productForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-      <!-- Product SKU -->
       <div class="form-group">
         <label for="productSku">Product SKU</label>
         <input
@@ -25,7 +23,6 @@
         </div>
       </div>
 
-      <!-- Product Name -->
       <div class="form-group">
         <label for="productName">Product Name</label>
         <input
@@ -41,7 +38,6 @@
         </div>
       </div>
 
-      <!-- Product Price -->
       <div class="form-group">
         <label for="productPrice">Product Price</label>
         <input
@@ -63,7 +59,6 @@
         </div>
       </div>
 
-      <!-- Short Name -->
       <div class="form-group">
         <label for="productShortName">Short Name</label>
         <input
@@ -84,7 +79,6 @@
         </div>
       </div>
 
-      <!-- Description -->
       <div class="form-group">
         <label for="productDescription">Description</label>
         <textarea
@@ -104,7 +98,6 @@
         </div>
       </div>
 
-      <!-- Product Image URL -->
       <div class="form-group">
         <label for="productImageUrl">Product Image URL</label>
         <input
@@ -129,7 +122,6 @@
         </div>
       </div>
 
-      <!-- Modal Actions -->
       <div class="modal-actions">
         <button type="button" (click)="closeModal()">Cancel</button>
         <button type="submit" [disabled]="productForm.invalid">Save</button>

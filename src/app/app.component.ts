@@ -34,9 +34,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements DoCheck, AfterViewInit {
+export class AppComponent implements DoCheck {
   // Life Cycle Hooks
-  
+
   // 1 ngOnChanges()
   // 2 ngOnInit()
   // 3 ngDoCheck()
@@ -57,9 +57,9 @@ export class AppComponent implements DoCheck, AfterViewInit {
     console.log('ngDocheck Called Parent');
   }
 
-  ngAfterViewInit(): void {
-    console.log('After View Init', this.para);
-  }
+  // ngAfterViewInit(): void {
+  //   console.log('After View Init', this.para);
+  // }
 
   constructor(private http: HttpClient) {}
 }

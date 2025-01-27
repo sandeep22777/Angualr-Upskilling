@@ -4,10 +4,21 @@ import { ProductService } from '../../product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-all-products',
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+  ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
   providers: [ProductService],

@@ -391,3 +391,18 @@ button[type="submit"]:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.product-card {
+  width: 300px;
+  height: auto;
+}
+
+mat-card {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}

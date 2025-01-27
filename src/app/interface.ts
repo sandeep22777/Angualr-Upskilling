@@ -45,10 +45,18 @@ export interface IProductRequestBody {
   ProductImageUrl?: string;
 }
 
+export interface IProductRequestBody2 {
+  ProductSku?: string;
+  ProductName?: string;
+  ProductPrice?: number;
+  ProductShortName?: string;
+  ProductDescription?: string;
+  ProductImageUrl?: string;
+}
 
 export interface IPost {
-  userId: number
-  id?: number
-  title: string
-  body: string
+  userId: number;
+  id?: number;
+  title: string;
+  body: string;
 }
