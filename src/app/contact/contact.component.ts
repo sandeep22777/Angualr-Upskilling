@@ -13,6 +13,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { CapitalLetterWordPipe } from '../capital-letter-word.pipe';
 
 @Component({
   selector: 'app-contact',
@@ -26,6 +27,7 @@ import { ProductDialogComponent } from '../product-dialog/product-dialog.compone
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    CapitalLetterWordPipe,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
@@ -39,6 +41,18 @@ export class ContactComponent {
   productForm!: FormGroup;
   showModal = false;
   isEditMode = false;
+
+  name = 'Angular Material';
+
+  today = new Date();
+
+  obj = {
+    name: 'IPhone 16 Pro',
+    price: '140000',
+    country: 'USA',
+  };
+
+  textPipe = 'You do not need to keep reconnecting every few hours to accumulate Yaps';
 
   constructor(private fb: FormBuilder, private dialog: MatDialog) {}
 

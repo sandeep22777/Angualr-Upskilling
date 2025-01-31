@@ -3,10 +3,11 @@ import { IForm, IPost } from '../interface';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-about',
-  imports: [FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
   standalone: true,

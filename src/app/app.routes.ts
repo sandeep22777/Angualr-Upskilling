@@ -20,10 +20,33 @@ export const routes: Routes = [
   {
     path: 'products',
     component: AllProductsComponent,
+    children: [
+      {
+        path: 'all',
+        component: ChildrenComponent,
+      },
+      {
+        path: 'table',
+        component: TableComponent,
+      },
+    ],
   },
   {
     path: 'posts',
-    component: AboutComponent,
+    children: [
+      {
+        path: '',
+        component: AboutComponent,
+      },
+      {
+        path: 'details',
+        component: ChildrenComponent,
+      },
+      {
+        path: 'table',
+        component: TableComponent,
+      },
+    ],
   },
   {
     path: 'contact',

@@ -8,6 +8,8 @@ import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
+import { TextColourDirective } from '../../text-colour.directive';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-all-products',
@@ -18,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    TextColourDirective,
+    RouterModule,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',

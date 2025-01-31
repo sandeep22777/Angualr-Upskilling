@@ -87,3 +87,7 @@ button[type="submit"]:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
+
+.pipe {
+  margin-left: 5rem;
+}

@@ -70,7 +70,11 @@
   </div>
 </div>
 
-<button class="add-product-btn" (click)="openModal()">Add Product</button>
+<!-- <button class="add-product-btn" (click)="openModal()">Add Product</button> -->
+
+<button class="add-product-btn">
+  <a routerLink="/posts/table" routerLinkActive="active"> Go To Table</a>
+</button>
 
 <div class="product-container">
   <div *ngFor="let post of posts" class="product-card">
@@ -82,3 +86,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>

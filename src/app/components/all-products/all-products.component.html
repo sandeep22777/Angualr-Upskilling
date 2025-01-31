@@ -130,7 +130,11 @@
   </div>
 </div>
 
-<button class="add-product-btn" (click)="openModal()">Add Product</button>
+<!-- <button class="add-product-btn" (click)="openModal()">Add Product</button> -->
+
+<button class="add-product-btn">
+  <a routerLink="/products/table" routerLinkActive="active"> Go To Table</a>
+</button>
 
 <div class="product-container">
   <div class="loader-container" *ngIf="isLoading">
@@ -143,8 +147,12 @@
       class="product-image"
     />
     <div class="product-details">
-      <h3 class="product-name">{{ product.productName }}</h3>
-      <p class="product-description">{{ product.productDescription }}</p>
+      <h3 class="product-name" [ngStyle]="{ color: 'orange' }">
+        {{ product.productName }}
+      </h3>
+      <p class="product-description" [appTextColour]="'blue'">
+        {{ product.productDescription }}
+      </p>
       <p class="product-price">Price: {{ product.productPrice }}</p>
       <p class="product-category">Category: {{ product.categoryName }}</p>
     </div>
@@ -156,3 +164,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>
