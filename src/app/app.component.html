@@ -86,29 +86,84 @@
   }
 </style>
 
-<main class="main">
-  <div class="content">
-    <h1>Hello, {{ title }}</h1>
-    <p>Welcome to the official Best Buy site. 🎉</p>
-  </div>
-  <nav class="links">
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/products" routerLinkActive="active">Products</a>
-    <a routerLink="/posts" routerLinkActive="active">Posts</a>
-    <a routerLink="/contact" routerLinkActive="active">Contact</a>
-    <a routerLink="/table" routerLinkActive="active">Table</a>
-  </nav>
-  <!-- <h2>Parent Component</h2>
-  <h3>ng After View Init</h3>
-  <p #pp>After View Init</p>
-  <div class="iinput">
-    <input type="text" [(ngModel)]="data" />
-    temp : <input type="text" [(ngModel)]="temp" />
-  </div>
-  <app-children [cdata]="data">
-    <p #content>This is Parent Data Projection</p>
-    <p>{{ data }}</p>
-  </app-children> -->
-</main>
+<header
+  class="bg-blue-600 text-white p-6 flex justify-between items-center m-4"
+>
+  <!-- Website Name -->
+  <h1 class="text-2xl font-bold ml-8">Best Buy</h1>
 
-<router-outlet> </router-outlet>
+  <!-- Hamburger Menu Button (Visible on Mobile) -->
+  <button
+    class="block md:hidden text-white focus:outline-none"
+    (click)="toggleMenu()"
+  >
+    &#9776;
+    <!-- Unicode for Hamburger Icon -->
+  </button>
+
+  <!-- Navigation Links -->
+  <nav class="hidden md:flex space-x-4 mr-4">
+    <a routerLink="/home" routerLinkActive="active" class="hover:text-gray-300"
+      >Home</a
+    >
+    <a
+      routerLink="/products"
+      routerLinkActive="active"
+      class="hover:text-gray-300"
+      >Products</a
+    >
+    <a routerLink="/posts" routerLinkActive="active" class="hover:text-gray-300"
+      >Posts</a
+    >
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      class="hover:text-gray-300"
+      >Contact</a
+    >
+    <a routerLink="/table" routerLinkActive="active" class="hover:text-gray-300"
+      >Table</a
+    >
+  </nav>
+</header>
+
+<!-- Mobile Navigation Dropdown -->
+<nav *ngIf="menuOpen" class="md:hidden bg-blue-700 text-white p-4 space-y-2">
+  <a
+    routerLink="/home"
+    routerLinkActive="active"
+    class="block hover:text-gray-300"
+    (click)="closeMenu()"
+    >Home</a
+  >
+  <a
+    routerLink="/products"
+    routerLinkActive="active"
+    class="block hover:text-gray-300"
+    (click)="closeMenu()"
+    >Products</a
+  >
+  <a
+    routerLink="/posts"
+    routerLinkActive="active"
+    class="block hover:text-gray-300"
+    (click)="closeMenu()"
+    >Posts</a
+  >
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    class="block hover:text-gray-300"
+    (click)="closeMenu()"
+    >Contact</a
+  >
+  <a
+    routerLink="/table"
+    routerLinkActive="active"
+    class="block hover:text-gray-300"
+    (click)="closeMenu()"
+    >Table</a
+  >
+</nav>
+
+<router-outlet></router-outlet>

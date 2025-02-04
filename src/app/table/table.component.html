@@ -1,63 +1,195 @@
-<div style="margin: 16px">
-  <mat-form-field appearance="outline" style="width: 100%">
+<!-- <div class="p-4">
+  <mat-form-field appearance="outline" class="w-full">
     <mat-label>Filter</mat-label>
     <input
       matInput
       (keyup)="applyFilter($event)"
       placeholder="Type to filter..."
+      class=""
     />
   </mat-form-field>
 
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    matSort
-    class="mat-elevation-z8"
-    style="width: 100%; margin-top: 16px"
-  >
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+  <div class="overflow-x-auto mt-4">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8 w-full min-w-[600px] sm:min-w-full"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
-      <td mat-cell *matCellDef="let element">{{ element.age }}</td>
-    </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
+        <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-    </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef>Phone</th>
-      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
-    </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
-      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
-    </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+        <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="isActive">
-      <th mat-header-cell *matHeaderCellDef>Active</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.isActive ? "Yes" : "No" }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="isActive">
+        <th mat-header-cell *matHeaderCellDef>Active</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.isActive ? "Yes" : "No" }}
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 
   <mat-paginator
     [pageSizeOptions]="[5, 10, 15]"
     showFirstLastButtons
+    class="mt-4"
+  ></mat-paginator>
+</div> -->
+
+<div class="p-4">
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Filter table items</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Type to filter..."
+      aria-label="Filter table data"
+    />
+  </mat-form-field>
+
+  <div class="overflow-x-auto mt-4">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8 w-full min-w-[600px] sm:min-w-full"
+      role="table"
+      aria-label="User information table"
+    >
+      <caption class="text-left text-gray-600 text-sm">
+        This table displays user information, including ID, name, age, email,
+        phone, city, and active status.
+      </caption>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">
+          ID
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          scope="col"
+          role="columnheader"
+        >
+          Name
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          {{ element.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          scope="col"
+          role="columnheader"
+        >
+          Age
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          {{ element.age }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef scope="col" role="columnheader">
+          Email
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          <a [href]="'mailto:' + element.email" class="text-blue-500 underline">
+            {{ element.email }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef scope="col" role="columnheader">
+          Phone
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          <a [href]="'tel:' + element.phone" class="text-blue-500 underline">
+            {{ element.phone }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          scope="col"
+          role="columnheader"
+        >
+          City
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          {{ element.city }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isActive">
+        <th mat-header-cell *matHeaderCellDef scope="col" role="columnheader">
+          Active
+        </th>
+        <td mat-cell *matCellDef="let element" role="cell">
+          <span [class]="element.isActive ? 'text-green-600' : 'text-red-600'">
+            {{ element.isActive ? "Yes" : "No" }}
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" role="row"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        role="row"
+      ></tr>
+    </table>
+  </div>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 15]"
+    showFirstLastButtons
+    class="mt-4"
+    aria-label="Pagination for user data"
   ></mat-paginator>
 </div>

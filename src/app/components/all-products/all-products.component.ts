@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { IProductDetail, IProductRequestBody } from '../../interface';
 import { ProductService } from '../../product.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +29,9 @@ import { RouterModule } from '@angular/router';
   standalone: true,
 })
 export class AllProductsComponent {
+  @ViewChild('modalContainer', { static: false }) modalContainer!: ElementRef;
+  @ViewChild('closeButton', { static: false }) closeButton!: ElementRef;
+  @ViewChild('firstFocusable', { static: false }) firstFocusable!: ElementRef;
   products: IProductDetail[] | null = null;
 
   showModal = false;
@@ -79,11 +82,46 @@ export class AllProductsComponent {
 
   openModal() {
     this.showModal = true;
+    setTimeout(() => {
+      this.firstFocusable?.nativeElement.focus(); // Focus the first input field in modal
+    });
   }
 
   closeModal() {
     this.showModal = false;
+    setTimeout(() => {
+      document.getElementById('addProductButton')?.focus(); // Return focus to button
+    });
     this.productFormData = {};
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.showModal) {
+      this.closeModal(); // Close modal on Escape key
+    }
+
+    if (event.key === 'Tab' && this.showModal) {
+      this.trapFocus(event);
+    }
+  }
+
+  trapFocus(event: KeyboardEvent) {
+    const focusableElements =
+      this.modalContainer.nativeElement.querySelectorAll(
+        'input, button, textarea, select, a[href]'
+      );
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
   }
 
   onSubmit() {

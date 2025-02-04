@@ -57,9 +57,13 @@ export class AppComponent implements DoCheck {
     console.log('ngDocheck Called Parent');
   }
 
-  // ngAfterViewInit(): void {
-  //   console.log('After View Init', this.para);
-  // }
+  menuOpen = false;
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+  closeMenu() {
+    this.menuOpen = false;
+  }
   constructor(private http: HttpClient) {}
 }
